@@ -10,35 +10,14 @@ namespace Лаба_3_2_
     {
         static void Main(string[] args)
         {
-            bool flag = false;
-            do
-            {
-                try
-                {
-                    // string path = @"С:\папка\mytext.txt";
-                    string path;//Путь
-                    Console.WriteLine("Введите путь в формате 'С:\\папка\\mytext.txt'");
-                    path = Console.ReadLine();
-
-
-                    Console.WriteLine("Введите текст");
-                    string text = Console.ReadLine();
-
-
-                    Console.WriteLine("Выберите кодировку utf-8, 1251, 866");
-                    int Kodir = int.Parse(Console.ReadLine());
-
-
-                    using (TextWriter txt = new StreamWriter(path, false, Encoding.GetEncoding(Kodir)))
-                    {
-                        txt.WriteLine(text);
-                    }
-                    flag = true;
-                }
-                catch (Exception) { }
-            }
-            while (!flag);
-
+            string text, path;
+            Console.WriteLine("Ввести текст");
+            text = Console.ReadLine();
+            Console.WriteLine("Введите путь и имя файла для сохранения в формате C:\\File.txt:", Encoding.UTF8);
+            path = Console.ReadLine();
+            File.WriteAllText(path, text);
+            Console.WriteLine("Сохранено успешно");
+            Console.ReadLine();
             Console.ReadKey();
         }
     }
